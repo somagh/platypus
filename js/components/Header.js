@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
   },
   creditButton: {
     backgroundColor: '#2A93FF',
-    width: 140,
-    height: 26,
+    paddingVertical: 4,
+    paddingHorizontal: 7,
     borderRadius: 3,
   },
   creditText: {
