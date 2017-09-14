@@ -2,7 +2,7 @@ import { Image } from 'react-native'
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation'
-import Profile from './Profile'
+import Profile from './Transaction'
 
 const mapNavigationStateParamsToProps = SomeComponent => props => {
   const { navigation: { state: { params } } } = props
