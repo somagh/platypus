@@ -7,7 +7,17 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native'
+import { connect } from 'react-redux'
 import Header from './Header'
+import Transaction from './Transaction'
+
+function keyExtractor(item, index) {
+  return index
+}
+
+function renderItem({ item }) {
+  return <Transaction {...item} />
+}
 
 const listHeader = () => (
   <View style={styles.listHeader}>
@@ -24,7 +34,13 @@ class TransactionsList extends Component {
     return (
       <View style={styles.main}>
         <Header />
-        <FlatList ListHeaderComponent={listHeader} />
+        <FlatList
+          style={styles.list}
+          ListHeaderComponent={listHeader}
+          data={this.props.transactions}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+        />
       </View>
     )
   }
@@ -40,14 +56,13 @@ const styles = StyleSheet.create({
   },
   listHeader: {
     flexDirection: 'row',
-    height: 26,
-    marginHorizontal: 16,
+    paddingVertical: 2,
     marginVertical: 15,
   },
   button: {
     backgroundColor: '#7899C5',
-    width: 120,
-    height: 22,
+    paddingVertical: 5,
+    paddingHorizontal: 8,
     borderRadius: 2,
   },
   buttonText: {
@@ -58,6 +73,31 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
   },
+  list: {
+    paddingHorizontal: 15,
+  },
 })
 
-export default TransactionsList
+function mapStateToProps(state) {
+  return {
+    transactions: [
+      { name: 'دنریس تارگرین', value: 200 },
+      { name: 'نایت کینگ', value: -75 },
+      { name: 'نایت کینگ', value: -75 },
+      { name: 'دنریس تارگرین', value: 200 },
+      { name: 'دنریس تارگرین', value: 200 },
+      { name: 'نایت کینگ', value: -75 },
+      { name: 'نایت کینگ', value: -75 },
+      { name: 'دنریس تارگرین', value: 200 },
+      { name: 'دنریس تارگرین', value: 200 },
+      { name: 'نایت کینگ', value: -75 },
+      { name: 'نایت کینگ', value: -75 },
+      { name: 'دنریس تارگرین', value: 200 },
+      { name: 'دنریس تارگرین', value: 200 },
+      { name: 'نایت کینگ', value: -75 },
+      { name: 'نایت کینگ', value: -75 },
+      { name: 'دنریس تارگرین', value: 200 },
+    ],
+  }
+}
+export default connect(mapStateToProps)(TransactionsList)
