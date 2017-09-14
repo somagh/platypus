@@ -88,7 +88,7 @@ function mapStateToProps(state) {
       { name: 'دنریس تارگرین', value: 200 },
       { name: 'نایت کینگ', value: -75 },
       { name: 'نایت کینگ', value: -75 },
-      { name: 'دنریس تارگرین', value: 200 },
+      { name: 'دنریس تارگرین', value: 20000 },
       { name: 'دنریس تارگرین', value: 200 },
       { name: 'نایت کینگ', value: -75 },
       { name: 'نایت کینگ', value: -75 },
