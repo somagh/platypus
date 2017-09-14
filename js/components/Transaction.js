@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   status: {
     fontSize: 7,
-    fontFamily: 'IRANSansWebNoEn-Medium',
+    fontFamily: 'IRANSansWeb',
     color: '#C6C8CB',
   },
   payButton: {
@@ -105,12 +105,14 @@ const styles = StyleSheet.create({
   payButtonText: {
     color: '#FFFFFF',
     fontSize: 8,
+    fontFamily: 'IRANSansWeb',
   },
   name: {
     fontSize: 11,
     color: '#828D9B',
     flex: 1,
     textAlign: 'right',
+    fontFamily: 'IRANSansWeb',
   },
   valueContainer: {
     flexDirection: 'row',
@@ -122,6 +124,7 @@ const styles = StyleSheet.create({
     color: '#828D9B',
     flex: 1,
     textAlign: 'right',
+    fontFamily: 'IRANSansWeb',
   },
   moreInfo: {
     borderRadius: 3,
