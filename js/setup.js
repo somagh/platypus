@@ -1,4 +1,4 @@
-import { AppRegistry } from 'react-native'
+import { AppRegistry, Text } from 'react-native'
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import configureStore from './store'
@@ -10,19 +10,24 @@ function setup() {
     constructor(props) {
       super(props)
       this.state = { store: null }
-      /*configureStore().then(store => {
-        let token = null
-        console.log('token', store.getState().auth.token)
-        api.setToken(store.getState().auth.token)
-        store.subscribe(() => {
-          const nextToken = store.getState().auth.token
-          if (token !== nextToken) {
-            token = nextToken
-            api.setToken(token)
-          }
+      configureStore()
+        .then(store => {
+          // let token = null
+          // console.log('token', store.getState().auth.token)
+          // api.setToken(store.getState().auth.token)
+          // store.subscribe(() => {
+          //   const nextToken = store.getState().auth.token
+          //   if (token !== nextToken) {
+          //     token = nextToken
+          //     api.setToken(token)
+          //   }
+          // })
+          console.log('INJA')
+          this.setState({ store })
         })
-        this.setState({ store })
-      })*/
+        .catch(err => {
+          console.log('INJA ERROR', err)
+        })
     }
     render() {
       return (
