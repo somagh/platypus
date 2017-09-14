@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   },
   coloryNumber: {
     fontSize: 16,
+    fontFamily: 'IRANSansWeb',
     marginHorizontal: 2,
   },
   negativeNumber: {
@@ -100,6 +101,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   creditText: {
+    fontFamily: 'IRANSansWeb',
     fontSize: 14,
     textAlign: 'center',
     color: '#FFFFFF',

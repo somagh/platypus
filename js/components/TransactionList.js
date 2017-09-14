@@ -69,9 +69,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: 'center',
     color: '#FFFFFF',
+    fontFamily: 'IRANSansWeb',
   },
   title: {
     fontSize: 20,
+    fontFamily: 'IRANSansWeb',
   },
   list: {
     paddingHorizontal: 15,
