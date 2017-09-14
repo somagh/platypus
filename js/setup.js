@@ -10,24 +10,19 @@ function setup() {
     constructor(props) {
       super(props)
       this.state = { store: null }
-      configureStore()
-        .then(store => {
-          // let token = null
-          // console.log('token', store.getState().auth.token)
-          // api.setToken(store.getState().auth.token)
-          // store.subscribe(() => {
-          //   const nextToken = store.getState().auth.token
-          //   if (token !== nextToken) {
-          //     token = nextToken
-          //     api.setToken(token)
-          //   }
-          // })
-          console.log('INJA')
-          this.setState({ store })
-        })
-        .catch(err => {
-          console.log('INJA ERROR', err)
-        })
+      configureStore().then(store => {
+        // let token = null
+        // console.log('token', store.getState().auth.token)
+        // api.setToken(store.getState().auth.token)
+        // store.subscribe(() => {
+        //   const nextToken = store.getState().auth.token
+        //   if (token !== nextToken) {
+        //     token = nextToken
+        //     api.setToken(token)
+        //   }
+        // })
+        this.setState({ store })
+      })
     }
     render() {
       return (

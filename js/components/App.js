@@ -2,7 +2,7 @@ import { Image } from 'react-native'
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation'
-import Profile from './Profile'
+import TransactionList from './TransactionList'
 
 const mapNavigationStateParamsToProps = SomeComponent => props => {
   const { navigation: { state: { params } } } = props
@@ -10,7 +10,7 @@ const mapNavigationStateParamsToProps = SomeComponent => props => {
 }
 
 const AppScreens = {
-  Profile: { screen: mapNavigationStateParamsToProps(Profile) },
+  TransactionList: { screen: mapNavigationStateParamsToProps(TransactionList) },
 }
 
 const TabApp = TabNavigator(
@@ -18,7 +18,7 @@ const TabApp = TabNavigator(
     prof: {
       screen: StackNavigator(AppScreens, {
         headerMode: 'none',
-        initialRouteName: 'Profile',
+        initialRouteName: 'TransactionList',
       }),
       navigationOptions: {},
     },
