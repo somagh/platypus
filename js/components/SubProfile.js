@@ -10,6 +10,7 @@ import {
   Clipboard,
   Modal,
   TextInput,
+  TouchableWithoutFeedback,
 } from 'react-native'
 import BankButton from './BankButton'
 import IC_CLIP from '../images/pasargad.png'
@@ -55,48 +56,52 @@ class SubProfile extends Component {
           onRequestClose={() => {}}
           visible={this.state.modalVisible}
         >
-          <View style={styles.modal}>
-            <View style={styles.modalContainer}>
-              <View style={styles.modalHeader}>
-                <View style={styles.flexOne} />
-                <Text style={styles.headerText}>{'اضافه کردن حساب بانکی'}</Text>
-                <View style={styles.flexOne} />
-              </View>
-              <View style={styles.modalContent}>
-                <Text style={styles.shabaInputText}>{'شماره شبا'}</Text>
-                <View style={styles.shabaContainer}>
-                  {this.state.shabaInput.length >= 8 && (
-                    <Image
-                      source={IC_PASARGAD}
-                      style={styles.shabaInputImage}
-                    />
-                  )}
-                  {!(this.state.shabaInput.length >= 8) && (
-                    <View style={{ width: 16, height: 16, marginRight: 4 }} />
-                  )}
-                  <TextInput
-                    style={[
-                      styles.shabaInputText,
-                      { width: 250, textAlign: 'left' },
-                    ]}
-                    value={this.state.shabaInput}
-                    onChangeText={text => {
-                      this.setState({ shabaInput: text })
-                    }}
-                    underlineColorAndroid="transparent"
-                    autoFocus
-                  />
-                </View>
-                <View style={styles.headerButton}>
+          <TouchableWithoutFeedback onPress={() => {}}>
+            <View style={styles.modal}>
+              <View style={styles.modalContainer}>
+                <View style={styles.modalHeader}>
                   <View style={styles.flexOne} />
-                  <Text style={styles.headerButtonText}>
+                  <Text style={styles.headerText}>
                     {'اضافه کردن حساب بانکی'}
                   </Text>
                   <View style={styles.flexOne} />
                 </View>
+                <View style={styles.modalContent}>
+                  <Text style={styles.shabaInputText}>{'شماره شبا'}</Text>
+                  <View style={styles.shabaContainer}>
+                    {this.state.shabaInput.length >= 8 && (
+                      <Image
+                        source={IC_PASARGAD}
+                        style={styles.shabaInputImage}
+                      />
+                    )}
+                    {!(this.state.shabaInput.length >= 8) && (
+                      <View style={{ width: 16, height: 16, marginRight: 4 }} />
+                    )}
+                    <TextInput
+                      style={[
+                        styles.shabaInputText,
+                        { width: 250, textAlign: 'left' },
+                      ]}
+                      value={this.state.shabaInput}
+                      onChangeText={text => {
+                        this.setState({ shabaInput: text })
+                      }}
+                      underlineColorAndroid="transparent"
+                      autoFocus
+                    />
+                  </View>
+                  <View style={styles.headerButton}>
+                    <View style={styles.flexOne} />
+                    <Text style={styles.headerButtonText}>
+                      {'اضافه کردن حساب بانکی'}
+                    </Text>
+                    <View style={styles.flexOne} />
+                  </View>
+                </View>
               </View>
             </View>
-          </View>
+          </TouchableWithoutFeedback>
         </Modal>
         <ScrollView
           contentContainerStyle={styles.container}
