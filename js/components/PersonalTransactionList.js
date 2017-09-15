@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'absolute',
     right: 20,
-    top: -20,
+    top: -15,
     width: 150,
     height: 30,
     borderRadius: 8,
