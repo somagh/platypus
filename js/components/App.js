@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation'
 import TransactionList from './TransactionList'
 import Transaction from './Transaction'
+import Profile from './Profile'
 
 const mapNavigationStateParamsToProps = SomeComponent => props => {
   const { navigation: { state: { params } } } = props
@@ -13,11 +14,19 @@ const mapNavigationStateParamsToProps = SomeComponent => props => {
 const AppScreens = {
   TransactionList: { screen: mapNavigationStateParamsToProps(TransactionList) },
   Transaction: { screen: mapNavigationStateParamsToProps(Transaction) },
+  Profile: { screen: mapNavigationStateParamsToProps(Profile) },
 }
 
 const TabApp = TabNavigator(
   {
     prof: {
+      screen: StackNavigator(AppScreens, {
+        headerMode: 'none',
+        initialRouteName: 'Profile',
+      }),
+      navigationOptions: {},
+    },
+    transList: {
       screen: StackNavigator(AppScreens, {
         headerMode: 'none',
         initialRouteName: 'TransactionList',

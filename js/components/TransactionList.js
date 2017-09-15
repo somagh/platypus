@@ -29,22 +29,18 @@ const listHeader = () => (
   </View>
 )
 
-class TransactionsList extends Component {
-  render() {
-    return (
-      <View style={styles.main}>
-        <Header />
-        <FlatList
-          style={styles.list}
-          ListHeaderComponent={listHeader}
-          data={this.props.transactions}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-        />
-      </View>
-    )
-  }
-}
+const TransactionsList = ({ transactions }) => (
+  <View style={styles.main}>
+    <Header />
+    <FlatList
+      style={styles.list}
+      ListHeaderComponent={listHeader}
+      data={transactions}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+    />
+  </View>
+)
 
 const styles = StyleSheet.create({
   main: {
