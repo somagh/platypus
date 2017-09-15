@@ -20,8 +20,16 @@ class SubProfile extends Component {
   }
   render() {
     return (
-      <View style={styles.mainContainer}>
-        <ScrollView contentContainerStyle={styles.container} horizontal={false}>
+      <View
+        style={[
+          styles.mainContainer,
+          this.props.height > 0 ? { height: this.props.height } : {},
+        ]}
+      >
+        <ScrollView
+          contentContainerStyle={styles.container}
+          removeClippedSubviews={false}
+        >
           <View style={styles.button}>
             <TouchableOpacity onPress={() => {}} style={styles.buttonTouch}>
               <View style={styles.flexOne} />
@@ -84,7 +92,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingTop: 15,
     alignItems: 'center',
-    width: WIDTH,
+    justifyContent: 'center',
   },
   container: {
     backgroundColor: '#FFFFFF',
@@ -124,18 +132,18 @@ const styles = StyleSheet.create({
 SubProfile.propTypes = {
   userCode: PropTypes.string,
   shabaCodes: PropTypes.arrayOf(PropTypes.string),
+  height: PropTypes.number,
 }
 
 SubProfile.defaultProps = {
+  height: 0,
   userCode: null,
   shabaCodes: [
     'IR4605709287198DF',
     'IR46012039287198DF98D',
     'IR4605709287198DF',
-    'IR46012039287198DF98D',
     'IR4605709287198DF',
     'IR46012039287198DF98D',
-    'IR4605709287198DF',
     'IR4605709287198DF',
     'IR46012039287198DF98D',
     'IR46012039287198DF98D',

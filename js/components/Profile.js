@@ -9,6 +9,7 @@ import {
   StatusBar,
   Platform,
   TextInput,
+  Dimensions,
 } from 'react-native'
 import { connect } from 'react-redux'
 import DebtAndDemand from './DebtAndDemand'
@@ -18,8 +19,10 @@ import DownArrowIcon from '../images/ic_arrow_down.png'
 import PencilIcon from '../images/ic_pencil.png'
 import CancelIcon from '../images/ic_times.png'
 import CheckIcon from '../images/ic_check.png'
+import SubProfile from './SubProfile'
 
 const extraHeight = 16 * (Platform.OS === 'ios')
+const Height = Dimensions.get('window').height
 
 class Profile extends Component {
   constructor(props) {
@@ -44,7 +47,7 @@ class Profile extends Component {
         <View style={styles.header}>
           {!this.state.editing && (
             <View style={styles.nameView}>
-              <Text style={styles.name}>{this.props.name}</Text>
+              <Text style={[styles.name]}>{this.props.name}</Text>
               <TouchableOpacity onPress={this.toEdit}>
                 <Image source={PencilIcon} style={styles.nameIcon} />
               </TouchableOpacity>
@@ -53,11 +56,12 @@ class Profile extends Component {
           {this.state.editing && (
             <View style={styles.nameView}>
               <TouchableOpacity onPress={this.endEdit} style={styles.editIcon}>
-                <Image source={CheckIcon} style={styles.nameIcon} />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={this.endEdit} style={styles.editIcon}>
                 <Image source={CancelIcon} style={styles.nameIcon} />
               </TouchableOpacity>
+              <TouchableOpacity onPress={this.endEdit} style={styles.editIcon}>
+                <Image source={CheckIcon} style={styles.nameIcon} />
+              </TouchableOpacity>
+
               <TextInput
                 style={styles.nameInput}
                 value={this.state.value}
@@ -89,6 +93,7 @@ class Profile extends Component {
           </View>
           <DebtAndDemand />
         </View>
+        <SubProfile height={Height - 225} />
       </View>
     )
   }
@@ -97,6 +102,7 @@ class Profile extends Component {
 const styles = StyleSheet.create({
   main: {
     flexDirection: 'column',
+    backgroundColor: '#F7F7F7',
   },
   header: {
     paddingTop: extraHeight,
@@ -119,9 +125,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: 'center',
     width: 100,
+    backgroundColor: '#FFFFFF',
   },
   nameIcon: { width: 15, height: 15, tintColor: '#9A9A9A', marginLeft: 3 },
-  editIcon: { alignSelf: 'flex-end', marginBottom: 13 },
+  editIcon: { alignSelf: 'flex-end', marginBottom: 6 },
   buttonBox: {
     flexDirection: 'column',
     marginBottom: 10,
