@@ -7,6 +7,9 @@ import IC_PERSON from '../images/ic_person.png'
 
 import moment from 'moment-jalaali'
 import { toFaDigit, commaSeparateNumber } from '../modules/utility'
+import IC_DOLLOR from '../images/ic_dollor.png'
+import IC_CLOCK from '../images/ic_clock.png'
+import IC_TAG from '../images/ic_tag.png'
 
 class PersonalTransaction extends Component {
   render() {
@@ -27,13 +30,13 @@ class PersonalTransaction extends Component {
               </TouchableOpacity>
             )}
             <Text style={styles.desc}>{this.props.desc}</Text>
-            <Image source={IC_PERSON} style={styles.descImage} />
+            <Image source={IC_TAG} style={styles.descImage} />
           </View>
           <View style={styles.valueContainer}>
             <Text style={styles.valueText}>{`${toFaDigit(
               commaSeparateNumber(Math.abs(this.props.value).toString()),
             )} پنی`}</Text>
-            <Image source={IC_CHEVRON_DOWN} style={styles.descImage} />
+            <Image source={IC_DOLLOR} style={styles.descImage} />
           </View>
           <View style={styles.dateContainer}>
             <Text style={styles.dateText}>
@@ -43,7 +46,7 @@ class PersonalTransaction extends Component {
                 moment.unix(this.props.date / 1000).format('jDD jMMMM jYYYY'),
               )}`}
             </Text>
-            <Image source={IC_CHEVRON_DOWN} style={styles.descImage} />
+            <Image source={IC_CLOCK} style={styles.descImage} />
           </View>
         </View>
         <View

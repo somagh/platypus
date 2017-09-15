@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import IC_CHEVRON_DOWN from '../images/ic_chevron_down.png'
 import IC_CHEVRON_UP from '../images/ic_chevron_up.png'
 import IC_PERSON from '../images/ic_person.png'
+import IC_DOLLOR from '../images/ic_dollor.png'
 
 import { toFaDigit, commaSeparateNumber } from '../modules/utility'
 
@@ -23,14 +24,14 @@ class Transaction extends Component {
                 </View>
               </TouchableOpacity>
             )}
-            <Text style={styles.name}>{this.props.fullname}</Text>
+            <Text style={styles.name}>{this.props.user.fullname}</Text>
             <Image source={IC_PERSON} style={styles.nameImage} />
           </View>
           <View style={styles.valueContainer}>
             <Text style={styles.valueText}>{`${toFaDigit(
               commaSeparateNumber(Math.abs(this.props.value).toString()),
             )} پنی`}</Text>
-            <Image source={IC_CHEVRON_DOWN} style={styles.nameImage} />
+            <Image source={IC_DOLLOR} style={styles.nameImage} />
           </View>
           <TouchableOpacity onPress={() => {}}>
             <View style={styles.moreInfo}>
@@ -141,9 +142,11 @@ const styles = StyleSheet.create({
 })
 
 Transaction.propTypes = {
-  fullname: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    fullname: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
   value: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
 }
 
 export default Transaction

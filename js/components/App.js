@@ -5,7 +5,11 @@ import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation'
 import TransactionList from './TransactionList'
 import Transaction from './Transaction'
 import Profile from './Profile'
-import Train from './Train'
+import PersonalTransactionList from './PersonalTransactionList'
+
+import IC_PROF from '../images/ic_profile.png'
+import IC_CREDIT from '../images/ic_credit.png'
+import IC_REQ from '../images/ic_request.png'
 
 const mapNavigationStateParamsToProps = SomeComponent => props => {
   const { navigation: { state: { params } } } = props
@@ -16,31 +20,52 @@ const AppScreens = {
   TransactionList: { screen: mapNavigationStateParamsToProps(TransactionList) },
   Transaction: { screen: mapNavigationStateParamsToProps(Transaction) },
   Profile: { screen: mapNavigationStateParamsToProps(Profile) },
-  Train: { screen: mapNavigationStateParamsToProps(Train) },
+  Person: { screen: mapNavigationStateParamsToProps(PersonalTransactionList) },
 }
 
 const TabApp = TabNavigator(
   {
-    train: {
+    profile: {
       screen: StackNavigator(AppScreens, {
         headerMode: 'none',
         initialRouteName: 'Profile',
       }),
-      navigationOptions: {},
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Image
+            source={IC_PROF}
+            style={{ tintColor, width: 20, height: 20 }}
+          />
+        ),
+      },
     },
     transList: {
       screen: StackNavigator(AppScreens, {
         headerMode: 'none',
         initialRouteName: 'TransactionList',
       }),
-      navigationOptions: {},
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Image
+            source={IC_CREDIT}
+            style={{ tintColor, width: 20, height: 20 }}
+          />
+        ),
+      },
     },
-    moz: {
+    person: {
       screen: StackNavigator(AppScreens, {
         headerMode: 'none',
-        initialRouteName: 'Train',
+        initialRouteName: 'Person',
       }),
-      navigationOptions: {},
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Image
+            source={IC_PROF}
+            style={{ tintColor, width: 20, height: 20 }}
+          />
+        ),
+      },
     },
   },
   {

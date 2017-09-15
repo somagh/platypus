@@ -98,7 +98,18 @@ class Profile extends Component {
           </View>
           <DebtAndDemand />
         </View>
-        <SubProfile height={Height - 225} />
+        <SubProfile
+          height={Height - 225}
+          shabaCodes={[
+            'IR4605712314311891',
+            'IR4601267876567654',
+            'IR4601267876512321',
+            'IR4605712312111232',
+            'IR4601267876567654',
+            'IR4601267876512087',
+          ]}
+        />
+        {/* <SubProfile height={Height - 225} /> */}
       </View>
     )
   }

@@ -11,6 +11,7 @@ import Header from './Header'
 import PersonalTransaction from './PersonalTransaction'
 import { toFaDigit, commaSeparateNumber } from '../modules/utility'
 
+
 function keyExtractor(item, index) {
   return index
 }
@@ -167,7 +168,7 @@ PersonalTransactionList.propTypes = {
 
 PersonalTransactionList.defaultProps = {
   personalTransactions: [
-    { desc: 'سلام عمو', value: 421, date: 42342342 },
+    { desc: 'علی', value: 421, date: 42342342 },
     { desc: 'سلام عمو', value: -421, date: 42342342 },
     { desc: 'سلام عمو', value: -421, date: 42342342 },
     { desc: 'سلام عمو', value: 421, date: 42342342 },

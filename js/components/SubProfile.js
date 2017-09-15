@@ -58,7 +58,11 @@ class SubProfile extends Component {
           onRequestClose={() => {}}
           visible={this.state.modalVisible}
         >
-          <TouchableWithoutFeedback onPress={() => {}}>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              this.setState({ modalVisible: false })
+            }}
+          >
             <View style={styles.modal}>
               <View style={styles.modalContainer}>
                 <View style={styles.modalHeader}>
@@ -111,7 +115,7 @@ class SubProfile extends Component {
         >
           <View style={styles.button}>
             <TouchableOpacity
-              onPress={this.setClip}
+              onPress={this.props.generateAddress}
               style={styles.buttonTouch}
               disabled={!!this.props.userCode}
             >
@@ -130,7 +134,7 @@ class SubProfile extends Component {
                     paddingHorizontal: 12,
                   }}
                 >
-                  <TouchableOpacity onPress={() => {}}>
+                  <TouchableOpacity onPress={this.setClip}>
                     <Image source={IC_CLIP} style={styles.clipImage} />
                   </TouchableOpacity>
                   <View style={styles.flexOne} />
@@ -300,16 +304,26 @@ SubProfile.propTypes = {
   userCode: PropTypes.string,
   shabaCodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   height: PropTypes.number,
-  generateAddress: PropTypes.func.isRequired,
+  //  generateAddress: PropTypes.func.isRequired,
 }
 
 SubProfile.defaultProps = {
   height: 0,
   userCode: null,
+  shabaCode: [
+    'IR4605712314311891',
+    'IR4601267876567654',
+    'IR4601267876512321',
+    'IR4605712312111232',
+    'IR4601267876567654',
+    'IR4601267876512087',
+  ],
 }
 
 function mapStateToProps(state) {
+  // console.log
   return { shabaCodes: state.user.cards, userCode: state.user.userCode }
 }
 
-export default connect(mapStateToProps, { generateAddress })(SubProfile)
+export default SubProfile
+// export default connect(mapStateToProps, { generateAddress })(SubProfile)
