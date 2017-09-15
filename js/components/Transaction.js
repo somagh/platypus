@@ -10,46 +10,46 @@ import { toFaDigit, commaSeparateNumber } from '../modules/utility'
 class Transaction extends Component {
   render() {
     return (
-      <TouchableOpacity onPress={() => {}}>
-        <View style={styles.container}>
-          <View style={styles.transContainer}>
-            <View style={styles.nameContainer}>
-              {this.props.value > 0 && (
-                <Text style={styles.status}>{'(در انتظار پرداخت)'}</Text>
-              )}
-              {this.props.value < 0 && (
-                <TouchableOpacity onPress={() => {}}>
-                  <View style={styles.payButton}>
-                    <Text style={styles.payButtonText}>{'پرداخت'}</Text>
-                  </View>
-                </TouchableOpacity>
-              )}
-              <Text style={styles.name}>{this.props.name}</Text>
-              <Image source={IC_PERSON} style={styles.nameImage} />
-            </View>
-            <View style={styles.valueContainer}>
-              <Text style={styles.valueText}>{`${toFaDigit(
-                commaSeparateNumber(Math.abs(this.props.value).toString()),
-              )} پنی`}</Text>
-              <Image source={IC_CHEVRON_DOWN} style={styles.nameImage} />
-            </View>
+      <View style={styles.container}>
+        <View style={styles.transContainer}>
+          <View style={styles.nameContainer}>
+            {this.props.value > 0 && (
+              <Text style={styles.status}>{'(در انتظار پرداخت)'}</Text>
+            )}
+            {this.props.value < 0 && (
+              <TouchableOpacity onPress={() => {}}>
+                <View style={styles.payButton}>
+                  <Text style={styles.payButtonText}>{'پرداخت'}</Text>
+                </View>
+              </TouchableOpacity>
+            )}
+            <Text style={styles.name}>{this.props.name}</Text>
+            <Image source={IC_PERSON} style={styles.nameImage} />
+          </View>
+          <View style={styles.valueContainer}>
+            <Text style={styles.valueText}>{`${toFaDigit(
+              commaSeparateNumber(Math.abs(this.props.value).toString()),
+            )} پنی`}</Text>
+            <Image source={IC_CHEVRON_DOWN} style={styles.nameImage} />
+          </View>
+          <TouchableOpacity onPress={() => {}}>
             <View style={styles.moreInfo}>
               <Text style={styles.payButtonText}>{'اطلاعات بیشتر'}</Text>
             </View>
-          </View>
-          <View
-            style={[
-              styles.chervonContainer,
-              { backgroundColor: this.props.value > 0 ? '#00DF84' : '#FF4C61' },
-            ]}
-          >
-            <Image
-              source={this.props.value > 0 ? IC_CHEVRON_DOWN : IC_CHEVRON_UP}
-              style={styles.chervonButton}
-            />
-          </View>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
+        <View
+          style={[
+            styles.chervonContainer,
+            { backgroundColor: this.props.value > 0 ? '#00DF84' : '#FF4C61' },
+          ]}
+        >
+          <Image
+            source={this.props.value > 0 ? IC_CHEVRON_DOWN : IC_CHEVRON_UP}
+            style={styles.chervonButton}
+          />
+        </View>
+      </View>
     )
   }
 }
@@ -62,9 +62,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: 'row',
-    borderRadius: 6,
-    // borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#E3E3E3',
     marginBottom: 15,
   },
   transContainer: {

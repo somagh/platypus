@@ -42,9 +42,11 @@ class PersonalTransactionList extends Component {
               commaSeparateNumber(Math.abs(this.props.value).toString()),
             )} تومان`}</Text>
           </View>
-          <View style={styles.headerPayButton}>
-            <Text style={styles.headerText}>{'پرداخت'}</Text>
-          </View>
+          <TouchableOpacity onPress={() => {}}>
+            <View style={styles.headerPayButton}>
+              <Text style={styles.headerText}>{'پرداخت'}</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     )

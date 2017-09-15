@@ -5,6 +5,7 @@ import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation'
 import TransactionList from './TransactionList'
 import Transaction from './Transaction'
 import Profile from './Profile'
+import Train from './Train'
 
 const mapNavigationStateParamsToProps = SomeComponent => props => {
   const { navigation: { state: { params } } } = props
@@ -15,11 +16,12 @@ const AppScreens = {
   TransactionList: { screen: mapNavigationStateParamsToProps(TransactionList) },
   Transaction: { screen: mapNavigationStateParamsToProps(Transaction) },
   Profile: { screen: mapNavigationStateParamsToProps(Profile) },
+  Train: { screen: mapNavigationStateParamsToProps(Train) },
 }
 
 const TabApp = TabNavigator(
   {
-    prof: {
+    train: {
       screen: StackNavigator(AppScreens, {
         headerMode: 'none',
         initialRouteName: 'Profile',
@@ -36,7 +38,7 @@ const TabApp = TabNavigator(
     moz: {
       screen: StackNavigator(AppScreens, {
         headerMode: 'none',
-        initialRouteName: 'Profile',
+        initialRouteName: 'Train',
       }),
       navigationOptions: {},
     },
