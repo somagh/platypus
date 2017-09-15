@@ -11,7 +11,6 @@ export function getUser() {
       .catch(error => console.log(error))
 }
 export function generateAddress() {
-  console.log('sag')
   return dispatch =>
     api.tap
       .generateAddress({})
