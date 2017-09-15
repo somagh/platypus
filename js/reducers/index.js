@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux'
+import user from './user'
+import transaction from './transaction'
 
-function sag() {
-  return {}
-}
-
-const rootReducer = combineReducers({ sag })
+const rootReducer = combineReducers({ user, transaction })
 
 export default rootReducer
