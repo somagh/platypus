@@ -5,7 +5,7 @@ import configureStore from './store'
 import App from './components/App'
 import api from './api'
 api.setToken(
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5YmFlODBmNzVmNDcxNTVkMjA0MTk0NCIsImlhdCI6MTUwNTQ3MTk0Mn0.HgrDkLe3s1vJbfQH1ZBcMqfu5mMsgK06xupM2gsJAgU',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5YmJiYTU0MzEwM2I2MGM3OWNkZTUxMCIsImlhdCI6MTUwNTQ3NTIxMX0.cuBMWszfZsS_AC1P62MWGgm7ULu_z9MQFXqZ9n7J0Uc',
 )
 function setup() {
   class Root extends Component {

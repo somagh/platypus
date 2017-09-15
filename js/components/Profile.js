@@ -71,6 +71,7 @@ class Profile extends Component {
                 value={this.state.value}
                 underlineColorAndroid="transparent"
                 onChangeText={this.onInputChange}
+                autoFocus
               />
             </View>
           )}

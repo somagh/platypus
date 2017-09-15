@@ -6,12 +6,35 @@ import {
   Text,
   Dimensions,
   TouchableOpacity,
+  Image,
+  Clipboard,
+  Modal,
+  TextInput,
 } from 'react-native'
 import BankButton from './BankButton'
+import IC_CLIP from '../images/pasargad.png'
+import IC_PASARGAD from '../images/pasargad.png'
+import IC_MELLAT from '../images/mellat.png'
 
 const WIDTH = Dimensions.get('window').width
 
+const icons = {
+  '057': IC_PASARGAD,
+  '012': IC_MELLAT,
+}
+
 class SubProfile extends Component {
+  constructor(props) {
+    super(props)
+    this.setClip = this.setClip.bind(this)
+    this.state = {
+      shabaInput: '',
+      modalVisible: false,
+    }
+  }
+  setClip() {
+    Clipboard.setString(this.props.userCode)
+  }
   renderBanks() {
     const shabaViews = this.props.shabaCodes.map((code, index) => {
       return <BankButton shabaCode={code} key={index} />
@@ -26,17 +49,89 @@ class SubProfile extends Component {
           this.props.height > 0 ? { height: this.props.height } : {},
         ]}
       >
+        <Modal
+          animationType={'fade'}
+          transparent
+          onRequestClose={() => {}}
+          visible={this.state.modalVisible}
+        >
+          <View style={styles.modal}>
+            <View style={styles.modalContainer}>
+              <View style={styles.modalHeader}>
+                <View style={styles.flexOne} />
+                <Text style={styles.headerText}>{'اضافه کردن حساب بانکی'}</Text>
+                <View style={styles.flexOne} />
+              </View>
+              <View style={styles.modalContent}>
+                <Text style={styles.shabaInputText}>{'شماره شبا'}</Text>
+                <View style={styles.shabaContainer}>
+                  {this.state.shabaInput.length >= 8 && (
+                    <Image
+                      source={IC_PASARGAD}
+                      style={styles.shabaInputImage}
+                    />
+                  )}
+                  {!(this.state.shabaInput.length >= 8) && (
+                    <View style={{ width: 16, height: 16, marginRight: 4 }} />
+                  )}
+                  <TextInput
+                    style={[
+                      styles.shabaInputText,
+                      { width: 250, textAlign: 'left' },
+                    ]}
+                    value={this.state.shabaInput}
+                    onChangeText={text => {
+                      this.setState({ shabaInput: text })
+                    }}
+                    underlineColorAndroid="transparent"
+                    autoFocus
+                  />
+                </View>
+                <View style={styles.headerButton}>
+                  <View style={styles.flexOne} />
+                  <Text style={styles.headerButtonText}>
+                    {'اضافه کردن حساب بانکی'}
+                  </Text>
+                  <View style={styles.flexOne} />
+                </View>
+              </View>
+            </View>
+          </View>
+        </Modal>
         <ScrollView
           contentContainerStyle={styles.container}
           removeClippedSubviews={false}
         >
           <View style={styles.button}>
-            <TouchableOpacity onPress={() => {}} style={styles.buttonTouch}>
-              <View style={styles.flexOne} />
+            <TouchableOpacity
+              onPress={this.setClip}
+              style={styles.buttonTouch}
+              disabled={!!this.props.userCode}
+            >
               {!this.props.userCode && (
-                <Text style={styles.buttonText}> {'تولید کد کاربری'} </Text>
+                <View style={{ alignItems: 'center', flexDirection: 'row' }}>
+                  <View style={styles.flexOne} />
+                  <Text style={styles.buttonText}> {'تولید کد کاربری'} </Text>
+                  <View style={styles.flexOne} />
+                </View>
               )}
-              <View style={styles.flexOne} />
+              {this.props.userCode && (
+                <View
+                  style={{
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    paddingHorizontal: 12,
+                  }}
+                >
+                  <TouchableOpacity onPress={() => {}}>
+                    <Image source={IC_CLIP} style={styles.clipImage} />
+                  </TouchableOpacity>
+                  <View style={styles.flexOne} />
+                  <Text style={styles.buttonText}>{this.props.userCode}</Text>
+                  <View style={styles.flexOne} />
+                  <Text style={styles.buttonText}>{'کد کاربری:'}</Text>
+                </View>
+              )}
             </TouchableOpacity>
           </View>
           <Text style={styles.hintText}>
@@ -48,14 +143,14 @@ class SubProfile extends Component {
           <Text style={styles.bankTitle}>{'حساب‌های بانکی'}</Text>
 
           <View style={styles.button}>
-            <TouchableOpacity onPress={() => {}} style={styles.buttonTouch}>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({ modalVisible: true })
+              }}
+              style={styles.buttonTouch}
+            >
               <View style={styles.flexOne} />
-              {!this.props.userCode && (
-                <Text style={styles.buttonText}>
-                  {' '}
-                  {'اضافه کردن حساب بانکی'}{' '}
-                </Text>
-              )}
+              <Text style={styles.buttonText}> {'اضافه کردن حساب بانکی'} </Text>
               <View style={styles.flexOne} />
             </TouchableOpacity>
           </View>
@@ -68,6 +163,71 @@ class SubProfile extends Component {
 }
 
 const styles = StyleSheet.create({
+  modalContainer: {
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 3,
+    borderWidth: 1,
+    borderColor: '#E1E1E1',
+    width: 320,
+  },
+  modalHeader: {
+    backgroundColor: '#7898BD',
+    paddingHorizontal: 16,
+    paddingVertical: 4,
+    marginBottom: 8,
+    flexDirection: 'row',
+  },
+  headerText: {
+    fontFamily: 'IRANSansWeb',
+    fontSize: 14,
+    color: '#FFFFFF',
+  },
+  modalContent: {
+    backgroundColor: '#FFFFFF',
+    padding: 8,
+    width: 280,
+  },
+  shabaContainer: {
+    marginVertical: 16,
+    flexDirection: 'row',
+  },
+  shabaInputImage: {
+    width: 16,
+    height: 16,
+    marginRight: 4,
+  },
+  shabaInputText: {
+    fontFamily: 'IRANSansWeb',
+    textAlign: 'center',
+    fontSize: 10,
+    color: '#4D5E75',
+  },
+  headerButton: {
+    backgroundColor: '#3A8FFF',
+    paddingVertical: 4,
+    paddingHorizontal: 16,
+    flexDirection: 'row',
+    borderRadius: 3,
+    borderWidth: 1,
+    borderColor: '#E1E1E1',
+  },
+  headerButtonText: {
+    fontFamily: 'IRANSansWeb',
+    textAlign: 'center',
+    fontSize: 10,
+    color: '#FFFFFF',
+  },
+  modal: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  clipImage: {
+    width: 16,
+    height: 16,
+  },
   bankButtons: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -137,7 +297,7 @@ SubProfile.propTypes = {
 
 SubProfile.defaultProps = {
   height: 0,
-  userCode: null,
+  userCode: 'jdfsk',
   shabaCodes: [
     'IR4605709287198DF',
     'IR46012039287198DF98D',
