@@ -9,19 +9,20 @@ import {
   StatusBar,
   Platform,
 } from 'react-native'
+import { connect } from 'react-redux'
 import DebtAndDemand from './DebtAndDemand'
 import { toFaDigit, commaSeparateNumber } from '../modules/utility'
 
 const extraHeight = 16 * (Platform.OS === 'ios')
 
-const Header = () => (
+const Header = ({ credit }) => (
   <View style={styles.topIos}>
     <View style={styles.base}>
       <DebtAndDemand />
       <View style={styles.filler} />
       <TouchableOpacity style={styles.creditButton}>
         <Text style={styles.creditText}>
-          + {toFaDigit(commaSeparateNumber('اعتبار 1000000 تومان'))}
+          {toFaDigit(commaSeparateNumber(`اعتبار ${credit} تومان`))}
         </Text>
       </TouchableOpacity>
     </View>
@@ -58,4 +59,8 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Header
+function mapStateToProps(state) {
+  return { credit: state.user.credit }
+}
+
+export default connect(mapStateToProps)(Header)

@@ -4,15 +4,15 @@ import { Provider } from 'react-redux'
 import configureStore from './store'
 import App from './components/App'
 import api from './api'
-
+api.setToken(
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5YmFlODBmNzVmNDcxNTVkMjA0MTk0NCIsImlhdCI6MTUwNTQ3MTk0Mn0.HgrDkLe3s1vJbfQH1ZBcMqfu5mMsgK06xupM2gsJAgU',
+)
 function setup() {
   class Root extends Component {
     constructor(props) {
       super(props)
       this.state = { store: null }
-      api.setToken(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5YmFlODBmNzVmNDcxNTVkMjA0MTk0NCIsImlhdCI6MTUwNTQ3MTk0Mn0.HgrDkLe3s1vJbfQH1ZBcMqfu5mMsgK06xupM2gsJAgU',
-      )
+
       setTimeout(() => {
         api.tap
           .getUser({})

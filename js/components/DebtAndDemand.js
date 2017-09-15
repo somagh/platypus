@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps(state) {
-  return { demand: 23213, debt: 21213 }
+  return { demand: state.user.demand, debt: state.user.debt }
 }
 
 export default connect(mapStateToProps)(DebtAndDemand)

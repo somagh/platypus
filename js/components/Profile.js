@@ -13,6 +13,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import DebtAndDemand from './DebtAndDemand'
+import { getUser } from '../actions/user'
 import { toFaDigit, commaSeparateNumber } from '../modules/utility'
 import UpArrowIcon from '../images/ic_arrow_up.png'
 import DownArrowIcon from '../images/ic_arrow_down.png'
@@ -31,6 +32,9 @@ class Profile extends Component {
     this.toEdit = this.toEdit.bind(this)
     this.endEdit = this.endEdit.bind(this)
     this.onInputChange = this.onInputChange.bind(this)
+  }
+  componentWillMount() {
+    this.props.getUser()
   }
   toEdit() {
     this.setState({ editing: true })
@@ -140,8 +144,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginBottom: 10,
   },
-  paddingHorizontal: 5,
-  borderBottomWidth: 5,
   creditBox: {
     borderTopRightRadius: 6,
     borderTopLeftRadius: 6,
@@ -188,11 +190,11 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-    name: 'جان اسنو',
-    credit: 1000000,
-    debt: 23213,
-    demand: 23213,
+    name: state.user.fullname,
+    credit: state.user.credit,
+    debt: state.user.debt,
+    demand: state.user.demand,
   }
 }
 
-export default connect(mapStateToProps)(Profile)
+export default connect(mapStateToProps, { getUser })(Profile)
