@@ -7,7 +7,9 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native'
+import { connect } from 'react-redux'
 import BankButton from './BankButton'
+import { generateAddress } from '../actions/user'
 
 const WIDTH = Dimensions.get('window').width
 
@@ -31,7 +33,10 @@ class SubProfile extends Component {
           removeClippedSubviews={false}
         >
           <View style={styles.button}>
-            <TouchableOpacity onPress={() => {}} style={styles.buttonTouch}>
+            <TouchableOpacity
+              onPress={this.props.generateAddress}
+              style={styles.buttonTouch}
+            >
               <View style={styles.flexOne} />
               {!this.props.userCode && (
                 <Text style={styles.buttonText}> {'تولید کد کاربری'} </Text>
@@ -50,12 +55,7 @@ class SubProfile extends Component {
           <View style={styles.button}>
             <TouchableOpacity onPress={() => {}} style={styles.buttonTouch}>
               <View style={styles.flexOne} />
-              {!this.props.userCode && (
-                <Text style={styles.buttonText}>
-                  {' '}
-                  {'اضافه کردن حساب بانکی'}{' '}
-                </Text>
-              )}
+              <Text style={styles.buttonText}> {'اضافه کردن حساب بانکی'} </Text>
               <View style={styles.flexOne} />
             </TouchableOpacity>
           </View>
@@ -131,23 +131,18 @@ const styles = StyleSheet.create({
 
 SubProfile.propTypes = {
   userCode: PropTypes.string,
-  shabaCodes: PropTypes.arrayOf(PropTypes.string),
+  shabaCodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   height: PropTypes.number,
+  generateAddress: PropTypes.func.isRequired,
 }
 
 SubProfile.defaultProps = {
   height: 0,
   userCode: null,
-  shabaCodes: [
-    'IR4605709287198DF',
-    'IR46012039287198DF98D',
-    'IR4605709287198DF',
-    'IR4605709287198DF',
-    'IR46012039287198DF98D',
-    'IR4605709287198DF',
-    'IR46012039287198DF98D',
-    'IR46012039287198DF98D',
-  ],
 }
 
-export default SubProfile
+function mapStateToProps(state) {
+  return { shabaCodes: state.user.cards, userCode: state.user.userCode }
+}
+
+export default connect(mapStateToProps, { generateAddress })(SubProfile)

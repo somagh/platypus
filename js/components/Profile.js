@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import {
   AppRegistry,
   StyleSheet,
@@ -187,6 +187,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
 })
+
+Profile.propTypes = {
+  name: PropTypes.string.isRequired,
+  credit: PropTypes.number.isRequired,
+  debt: PropTypes.number.isRequired,
+  demand: PropTypes.number.isRequired,
+}
 
 function mapStateToProps(state) {
   return {
