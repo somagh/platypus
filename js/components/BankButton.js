@@ -1,22 +1,34 @@
 import React, { Component, PropTypes } from 'react'
-import { View, Image, Text, StyleSheet } from 'react-native'
+import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import IC_PASARGAD from '../images/pasargad.png'
 import IC_MELLAT from '../images/mellat.png'
-import IC_TIMES from '../images/ic-times.png'
+import IC_TIMES from '../images/ic_times.png'
 
-const icons = {}
+import { toFaDigit } from '../modules/utility'
+
+const icons = {
+  '057': IC_PASARGAD,
+  '012': IC_MELLAT,
+}
 
 class BankButton extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={IC_PASARGAD} style={styles.image} />
-        <Text style={styles.text}>{this.props.shabaCode}</Text>
-        <View style={styles.flexOne} />
         <Image
-          source={IC_TIMES}
-          style={[styles.image, { tintColor: '#D9D9D9' }]}
+          source={icons[this.props.shabaCode.substring(4, 7)]}
+          style={styles.image}
         />
+        <Text style={styles.text}>
+          {toFaDigit(this.props.shabaCode.toString())}
+        </Text>
+        <View style={styles.flexOne} />
+        <TouchableOpacity onPress={() => {}}>
+          <Image
+            source={IC_TIMES}
+            style={[styles.image, { tintColor: '#D9D9D9' }]}
+          />
+        </TouchableOpacity>
       </View>
     )
   }
