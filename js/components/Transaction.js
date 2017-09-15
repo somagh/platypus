@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 
 import IC_CHEVRON_DOWN from '../images/ic_chevron_down.png'
 import IC_CHEVRON_UP from '../images/ic_chevron_up.png'
+import IC_PERSON from '../images/ic-person.png'
+
 import { toFaDigit, commaSeparateNumber } from '../modules/utility'
 
 class Transaction extends Component {
@@ -20,7 +22,7 @@ class Transaction extends Component {
               </View>
             )}
             <Text style={styles.name}>{this.props.name}</Text>
-            <Image source={IC_CHEVRON_DOWN} style={styles.nameImage} />
+            <Image source={IC_PERSON} style={styles.nameImage} />
           </View>
           <View style={styles.valueContainer}>
             <Text style={styles.valueText}>{`${toFaDigit(
