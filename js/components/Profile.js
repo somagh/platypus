@@ -125,9 +125,16 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: 'center',
     width: 100,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FAFAFA',
+    color: '#BDBDBD',
   },
-  nameIcon: { width: 15, height: 15, tintColor: '#9A9A9A', marginLeft: 3 },
+  nameIcon: {
+    width: 15,
+    height: 15,
+    tintColor: '#9A9A9A',
+    marginLeft: 3,
+    marginRight: 10,
+  },
   editIcon: { alignSelf: 'flex-end', marginBottom: 6 },
   buttonBox: {
     flexDirection: 'column',
