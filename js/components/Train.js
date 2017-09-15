@@ -5,7 +5,7 @@ import SubProfile from './SubProfile'
 import PersonalTransaction from './PersonalTransaction'
 import PersonalTransactionList from './PersonalTransactionList'
 
-class Profile extends Component {
+class Train extends Component {
   render() {
     return <PersonalTransactionList />
   }
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Profile
+export default Train

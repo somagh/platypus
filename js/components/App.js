@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation'
 import TransactionList from './TransactionList'
-import Profile from './Profile'
+import Train from './Train'
 
 const mapNavigationStateParamsToProps = SomeComponent => props => {
   const { navigation: { state: { params } } } = props
@@ -12,12 +12,12 @@ const mapNavigationStateParamsToProps = SomeComponent => props => {
 
 const AppScreens = {
   TransactionList: { screen: mapNavigationStateParamsToProps(TransactionList) },
-  Profile: { screen: mapNavigationStateParamsToProps(Profile) },
+  Train: { screen: mapNavigationStateParamsToProps(Train) },
 }
 
 const TabApp = TabNavigator(
   {
-    prof: {
+    train: {
       screen: StackNavigator(AppScreens, {
         headerMode: 'none',
         initialRouteName: 'TransactionList',
@@ -27,7 +27,7 @@ const TabApp = TabNavigator(
     moz: {
       screen: StackNavigator(AppScreens, {
         headerMode: 'none',
-        initialRouteName: 'Profile',
+        initialRouteName: 'Train',
       }),
       navigationOptions: {},
     },
