@@ -23,7 +23,7 @@ class Transaction extends Component {
                 </View>
               </TouchableOpacity>
             )}
-            <Text style={styles.name}>{this.props.name}</Text>
+            <Text style={styles.name}>{this.props.fullname}</Text>
             <Image source={IC_PERSON} style={styles.nameImage} />
           </View>
           <View style={styles.valueContainer}>
@@ -141,8 +141,9 @@ const styles = StyleSheet.create({
 })
 
 Transaction.propTypes = {
-  name: PropTypes.string.isRequired,
+  fullname: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
 }
 
 export default Transaction

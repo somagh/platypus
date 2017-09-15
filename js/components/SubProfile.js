@@ -12,10 +12,12 @@ import {
   TextInput,
   TouchableWithoutFeedback,
 } from 'react-native'
+import { connect } from 'react-redux'
 import BankButton from './BankButton'
 import IC_CLIP from '../images/pasargad.png'
 import IC_PASARGAD from '../images/pasargad.png'
 import IC_MELLAT from '../images/mellat.png'
+import { generateAddress } from '../actions/user'
 
 const WIDTH = Dimensions.get('window').width
 
@@ -296,23 +298,18 @@ const styles = StyleSheet.create({
 
 SubProfile.propTypes = {
   userCode: PropTypes.string,
-  shabaCodes: PropTypes.arrayOf(PropTypes.string),
+  shabaCodes: PropTypes.arrayOf(PropTypes.string).isRequired,
   height: PropTypes.number,
+  generateAddress: PropTypes.func.isRequired,
 }
 
 SubProfile.defaultProps = {
   height: 0,
-  userCode: 'jdfsk',
-  shabaCodes: [
-    'IR4605709287198DF',
-    'IR46012039287198DF98D',
-    'IR4605709287198DF',
-    'IR4605709287198DF',
-    'IR46012039287198DF98D',
-    'IR4605709287198DF',
-    'IR46012039287198DF98D',
-    'IR46012039287198DF98D',
-  ],
+  userCode: null,
 }
 
-export default SubProfile
+function mapStateToProps(state) {
+  return { shabaCodes: state.user.cards, userCode: state.user.userCode }
+}
+
+export default connect(mapStateToProps, { generateAddress })(SubProfile)

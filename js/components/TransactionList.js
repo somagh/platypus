@@ -10,6 +10,7 @@ import {
 import { connect } from 'react-redux'
 import Header from './Header'
 import Transaction from './Transaction'
+import { getSections } from '../actions/transaction'
 
 function keyExtractor(item, index) {
   return index
@@ -29,18 +30,25 @@ const listHeader = () => (
   </View>
 )
 
-const TransactionsList = ({ transactions }) => (
-  <View style={styles.main}>
-    <Header />
-    <FlatList
-      style={styles.list}
-      ListHeaderComponent={listHeader}
-      data={transactions}
-      renderItem={renderItem}
-      keyExtractor={keyExtractor}
-    />
-  </View>
-)
+class TransactionsList extends Component {
+  componentWillMount() {
+    this.props.getSections()
+  }
+  render() {
+    return (
+      <View style={styles.main}>
+        <Header />
+        <FlatList
+          style={styles.list}
+          ListHeaderComponent={listHeader}
+          data={this.props.transactions}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+        />
+      </View>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   main: {
@@ -80,24 +88,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-    transactions: [
-      { name: 'دنریس تارگرین', value: 200 },
-      { name: 'نایت کینگ', value: -75 },
-      { name: 'نایت کینگ', value: -75 },
-      { name: 'دنریس تارگرین', value: 200 },
-      { name: 'دنریس تارگرین', value: 200 },
-      { name: 'نایت کینگ', value: -75 },
-      { name: 'نایت کینگ', value: -75 },
-      { name: 'دنریس تارگرین', value: 20000 },
-      { name: 'دنریس تارگرین', value: 200 },
-      { name: 'نایت کینگ', value: -75 },
-      { name: 'نایت کینگ', value: -75 },
-      { name: 'دنریس تارگرین', value: 200 },
-      { name: 'دنریس تارگرین', value: 200 },
-      { name: 'نایت کینگ', value: -75 },
-      { name: 'نایت کینگ', value: -75 },
-      { name: 'دنریس تارگرین', value: 200 },
-    ],
+    transactions: state.transaction.sections,
   }
 }
-export default connect(mapStateToProps)(TransactionsList)
+export default connect(mapStateToProps, { getSections })(TransactionsList)

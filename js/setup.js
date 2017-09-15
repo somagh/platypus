@@ -12,15 +12,6 @@ function setup() {
     constructor(props) {
       super(props)
       this.state = { store: null }
-
-      setTimeout(() => {
-        api.tap
-          .getUser({})
-          .then(user => {
-            console.log(user)
-          })
-          .catch(err => console.log(err))
-      }, 5000)
       //console.log('SALAM INJA')
       configureStore().then(store => {
         // let token = null
