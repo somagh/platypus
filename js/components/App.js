@@ -36,7 +36,7 @@ const TabApp = TabNavigator(
     moz: {
       screen: StackNavigator(AppScreens, {
         headerMode: 'none',
-        initialRouteName: 'Transaction',
+        initialRouteName: 'Profile',
       }),
       navigationOptions: {},
     },

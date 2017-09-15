@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
   main: {
     flexDirection: 'column',
     flex: 1,
+    backgroundColor: '#F7F7F7',
   },
   filler: {
     flex: 1,
@@ -70,6 +71,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontFamily: 'IRANSansWeb',
+    color: '#6E6E6E',
   },
   list: {
     paddingHorizontal: 15,
